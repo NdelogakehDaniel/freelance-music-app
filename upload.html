@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Music App Admin</title>
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <link rel="shortcut icon" href="https://img.icons8.com/windows/32/228BE6/audio-wave--v1.png" />
+
+  <style>
+    #success-text,#external_link_div{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+     
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="upload.html">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Upload New Content</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="category.html">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Add Category</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold">Upload New Content</h3>
+                  <h6 class="font-weight-normal mb-0">Fill Below Form To Upload New Content</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">View List Of ALL Uploads</p>
+                  <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body">
+                          <form class="forms-sample col-12">
+                            <div class="col-12" id="external_link_div">
+                              <label for="name" class="col-sm-4 col-form-label">External Link</label>
+                              <div class="col-sm-8">
+                                <input required type="text" class="form-control" id="external_link" placeholder="Enter External Link here...">
+                              </div>
+                            </div>
+                            <div class="form-group row col-12">
+                              <div class="col-4" id="name_div">
+                                <label for="name" class="col-sm-4 col-form-label">Name</label>
+                                <div class="col-sm-8">
+                                  <input required type="text" class="form-control" id="name" placeholder="Music Name">
+                                </div>
+                              </div>
+
+                              <div class="col-4" id="artist_name_div">
+                                <label for="artist_name" class="col-sm-4 col-form-label">Artist</label>
+                                <div class="col-sm-8">
+                                  <input required type="text" class="form-control" id="artist_name" placeholder="Artist Name">
+                                </div>
+                              </div>
+
+                              <div class="col-3">
+                                <label for="artist_name" class="col-sm-4 col-form-label" style="visibility: hidden;">ha</label>
+                                 <select onchange="trackChange(event)" class="form-control col-sm-8" id="fileType" required>
+                                  <option selected disabled>File Type</option>
+                                  <option>Audio</option>
+                                  <option>Video</option>
+                                  <option>External Link</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group row col-12">
+                              <div class="col-6">
+                                <label for="cover_image" class="col-sm-4 col-form-label">Cover Image</label>
+                                <div class="col-sm-8">
+                                  <input type="file" class="form-control" id="cover_image" placeholder="Username">
+                                </div>
+                              </div>
+
+                              <div class="col-6" id="upload_file_div">
+                                <label for="upload_file" class="col-sm-4 col-form-label">Upload File</label>
+                                <div class="col-sm-8">
+                                  <input required type="file" class="form-control" id="upload_file" placeholder="Username">
+                                </div>
+                              </div>
+                            </div>
+
+                            <h4 class="ml-4 my-4">Select Category</h4>
+                            <div class="form-group row col-12">
+                              <div class="col-sm-3">
+                                <select class="form-control" id="duration" required>
+                                  <option selected disabled>Duration</option>
+                                  <option>Male</option>
+                                  <option>Female</option>
+                                </select>
+                              </div>
+                              <div class="col-sm-3">
+                                <select class="form-control" id="language" required>
+                                  <option selected disabled>Language</option>
+                                  <option>Male</option>
+                                  <option>Female</option>
+                                </select>
+                              </div>
+
+                              <div class="col-sm-3">
+                                <select class="form-control" id="location" required>
+                                  <option selected disabled>Location</option>
+                                  <option>Male</option>
+                                  <option>Female</option>
+                                </select>
+                              </div>
+
+                              <div class="col-sm-3">
+                                <select class="form-control" id="type" required>
+                                  <option selected disabled>Music Type</option>
+                                  <option>Male</option>
+                                  <option>Female</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <b class="text-success" id="success-text">Saving File Please wait ....</b><br /><br />
+                            <button style="margin: auto;" id="saveBtn" type="button" class="btn btn-primary">Submit</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+              
+            <script>
+                document.write(" Copyright © "+new Date().getFullYear()+".")
+             </script>
+            </span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+<script>
+  window.onload=function(){
+    const category = JSON.parse(sessionStorage.getItem('category'))
+    fillSelects(category[0])
+  }
+
+  function fillSelects(obj){
+    var language = document.getElementById('language')
+    var duration = document.getElementById('duration')
+    var location = document.getElementById('location')
+    var type = document.getElementById('type')
+
+    let str = `<option selected disabled>Language</option>`
+    obj?.language.forEach((item)=>{
+      str+=`<option>${item}</option>`
+    })
+    language.innerHTML = str;
+
+    str = `<option selected disabled>Duration</option>`
+    obj?.duration.forEach((item)=>{
+      str+=`<option>${item}</option>`
+    })
+    duration.innerHTML = str;
+
+    str = `<option selected disabled>Location</option>`
+    obj?.location.forEach((item)=>{
+      str+=`<option>${item}</option>`
+    })
+    location.innerHTML = str;
+
+    str = `<option selected disabled>Music Type</option>`
+    obj?.type.forEach((item)=>{
+      str+=`<option>${item}</option>`
+    })
+    type.innerHTML = str;
+  }
+
+  //function to track change of file type
+  function trackChange(e){
+    const value = e.target.value;
+    var name = document.getElementById('name_div')
+    var artist = document.getElementById('artist_name_div')
+    var upload_file = document.getElementById('upload_file_div')
+    var external_link = document.getElementById('external_link_div')
+
+
+    if(value.toLowerCase()==='audio' || value.toLowerCase()==='video'){
+        upload_file.style.display='block'
+        external_link.style.display = 'none'
+    }else{
+        upload_file.style.display='none'
+        external_link.style.display = 'block'
+    }
+  }
+</script>
+
+<script type="module">
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+  import { getFirestore, collection, getDocs,addDoc ,doc } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+  import { getStorage, ref, uploadBytesResumable, getDownloadURL} from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-storage.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBaG623V-I-7Xmqu2Qp4yr5pysICD6kSpE",
+    authDomain: "freelance-music-app.firebaseapp.com",
+    projectId: "freelance-music-app",
+    storageBucket: "freelance-music-app.appspot.com",
+    messagingSenderId: "1022459607129",
+    appId: "1:1022459607129:web:34bfff0c373884e95b1948",
+    measurementId: "G-G3CX4S7NRE"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+  var storage = getStorage();
+
+  var link ='';
+  var thumbnail = '';
+
+  var cover_image = document.getElementById('cover_image')
+  var upload_file = document.getElementById('upload_file')
+
+  cover_image.addEventListener('change',async function(e){
+      await uploadImage(e.target.files[0],'thumbnail');
+  })
+  upload_file.addEventListener('change',async function(e){
+      await uploadImage(e.target.files[0],'mainFile');
+  })
+
+  //function to save music
+  async function saveMusic(e){
+      e.preventDefault();
+      var name = document.getElementById('name').value;
+      var artist = document.getElementById('artist_name').value;
+      var language = document.getElementById('language').value
+      var duration = document.getElementById('duration').value
+      var location = document.getElementById('location').value
+      var type = document.getElementById('type').value
+      let successText = document.getElementById('success-text')
+      var fileType = document.getElementById('fileType').value
+      var externalLink = document.getElementById('external_link')
+      if(externalLink!==null ){
+        externalLink = externalLink.value
+      }
+
+      const defaultThumbnail = 'https://firebasestorage.googleapis.com/v0/b/freelance-music-app.appspot.com/o/uploads%2Fdefault-image.png?alt=media&token=e678ad34-3922-46ed-a0a5-9aa6d33361bb'
+
+      if(thumbnail.length<=0){
+          thumbnail = defaultThumbnail
+      }
+
+      
+
+      const data = {
+        name, externalLink: externalLink? externalLink:'',artist,link,thumbnail,type: fileType,category:{
+          language,location,duration,type
+        }
+      }
+      successText.innerHTML = 'Saving new content please wait...'
+      successText.style.display='flex'
+      const btn = document.getElementById('saveBtn')
+      btn.setAttribute('disabled',true)
+      
+      const docRef = await addDoc(collection(db, "muisc-uploads"), data);
+
+      successText.style.display='none';
+
+      if(docRef.id){
+        alert('Saved new file successfully !!!')
+      }else{
+        alert('An error occured make sure that all fields are filled properly !!!')
+      }
+
+      btn.removeAttribute('disabled')
+
+    }
+
+  var saveBtn = document.getElementById('saveBtn')
+  saveBtn.addEventListener('click',function(e){
+    saveMusic(e)
+  })
+
+  // Get a list of cities from your database
+  async function getUploads(db) {
+    const filesCol = collection(db, 'muisc-uploads');
+    const filesSnapshot = await getDocs(filesCol);
+    const uploadList = filesSnapshot.docs.map(doc => doc.data());
+    return uploadList;
+  }
+
+  //function to upload image
+  async function uploadImage(file,key){
+    //to accept all type of files
+    const metadata = {
+      contentType: '*/'
+    }
+    
+
+    // Upload file and metadata to the object 'uploads/mountains.jpg'
+    const storageRef = ref(storage, 'uploads/' + file.name);
+    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+    document.getElementById('success-text').style.display='flex'
+
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on('state_changed',
+      (snapshot) => {
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        document.getElementById('success-text').innerHTML = 'Upload is ' + Math.ceil(progress) + '% done'
+        switch (snapshot.state) {
+          case 'paused':
+            console.log('Upload is paused')
+            break;
+          case 'running':
+            console.log('Upload is running')
+            break;
+        }
+      }, 
+      (error) => {
+        // A full list of error codes is available at
+        // https://firebase.google.com/docs/storage/web/handle-errors
+        switch (error.code) {
+          case 'storage/unauthorized':
+            alert("Upload failed try again")
+            break;
+          case 'storage/canceled':
+            // User canceled the upload
+            alert("User Cancelled Upload")
+            break;
+
+          // ...
+
+          case 'storage/unknown':
+            // Unknown error occurred, inspect error.serverResponse
+            alert("An error Occurred try again")
+            break;
+        }
+      }, 
+      async () => {
+        // Upload completed successfully, now we can get the download URL
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+          document.getElementById('success-text').innerHTML = 'Uploading done you can continue'
+          console.log('File available at', downloadURL);
+          if(key.toLowerCase()==='thumbnail'){
+            thumbnail = downloadURL
+            alert('Uploaded Thumbnail Successfully !!!')
+          }else{
+            link = downloadURL
+            alert('Uploaded File Successfully !!!')
+          }
+      });
+  }
+</script>
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+

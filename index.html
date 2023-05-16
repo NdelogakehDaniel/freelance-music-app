@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Music App Admin</title>
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <link rel="shortcut icon" href="https://img.icons8.com/windows/32/228BE6/audio-wave--v1.png" />
+</head>
+<body>
+  <div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+     
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="upload.html">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Upload New Content</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="category.html">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Add Category</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold">Welcome Admin</h3>
+                  <h6 class="font-weight-normal mb-0">All musics and elements uploaded smoothly!</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">View List Of ALL Uploads</p>
+                  <div class="row">
+                    <div class="col-lg-12 stretch-card">
+                      <div class="table-responsive">
+                        <div class="row">
+                          <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                              <div class="card-body ">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>#ID</th>
+                                        <th>Name</th>
+                                        <th>Artist</th>
+                                        <th>Type</th>
+                                        <th>Category</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="main-table">
+                                     
+                                    </tbody>
+                                  </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">View List Of All Categories</p>
+                  <div class="row">
+                    <div class="col-lg-12 stretch-card">
+                      <div class="table-responsive">
+                        <div class="row">
+                          <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                              <div class="card-body ">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Location(s)</th>
+                                        <th>Duration(s)</th>
+                                        <th>Type(s)</th>
+                                        <th>Language(s)</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="category-table">
+                                     
+                                    </tbody>
+                                  </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+              
+            <script>
+                document.write(" Copyright © "+new Date().getFullYear()+".")
+             </script>
+            </span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- implementing firebase -->
+
+
+  <script type="module">
+  
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+    import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyBaG623V-I-7Xmqu2Qp4yr5pysICD6kSpE",
+      authDomain: "freelance-music-app.firebaseapp.com",
+      projectId: "freelance-music-app",
+      storageBucket: "freelance-music-app.appspot.com",
+      messagingSenderId: "1022459607129",
+      appId: "1:1022459607129:web:34bfff0c373884e95b1948",
+      measurementId: "G-G3CX4S7NRE"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    var db = getFirestore(app);
+  
+    // Get a list of cities from your database
+    async function getUploads(db,collectionName) {
+      const filesCol = collection(db, collectionName);
+      const filesSnapshot = await getDocs(filesCol);
+      let uploadList = filesSnapshot.docs.map(doc => doc.data());
+      filesSnapshot.docs.map((doc,index) => uploadList[index]["id"] = doc.id);
+
+      return uploadList;
+    }
+
+    window.addEventListener('load',async function(){
+        const list = await getUploads(db,'muisc-uploads')
+        sessionStorage.setItem("upload_files",JSON.stringify(list))
+        fillTable(list)
+
+        
+
+        const list1 = await getUploads(db,'category')
+        sessionStorage.setItem("category",JSON.stringify(list1))
+        fillCategoryTable(list1)
+    })
+
+    function fillTable(list){
+      var table = document.getElementById("main-table");
+      var str = ``
+      list.forEach((item,index) => {
+        str+=`
+        <tr>
+          <td>${index+1}</td>
+          <td><a href='${item?.link}' target='_blank'>${item?.name}</a></td>
+          <td>${item?.artist}</td>
+          <td><label class="${item?.type.toLowerCase()=='audio' ? 'badge badge-warning'
+            :
+            item?.type.toLowerCase()=='video' ? 'badge badge-primary'
+            : 'badge badge-danger'
+          }">
+                ${item?.type}
+              </label>
+          </td>
+          <td>
+              <ul>
+                <li>Location: ${item?.category?.location}</li>
+                <li>Duration: ${item?.category?.duration}</li>
+                <li>Language: ${item?.category?.language}</li>
+              </ul>
+          </td>
+        </tr>
+        `
+      })
+
+      table.innerHTML = str;
+
+    }
+
+    function fillCategoryTable(list){
+      let table = document.getElementById('category-table')
+      var str = ``
+      list.forEach((item,index)=>{
+
+        let substr=``
+        item?.location.forEach((itm)=>{
+          substr +=`
+          <li>${itm}</li>
+          `
+        })
+
+        str+=`
+          <td>
+              <ol type='1'>
+                ${substr}
+              </ol>
+          </td>
+        `
+        substr=``
+        item?.duration.forEach((itm)=>{
+          substr +=`
+          <li>${itm}min</li>
+          `
+        })
+
+        str+=`
+          <td>
+              <ol>
+                ${substr}
+              </ol>
+          </td>`
+
+        substr=``
+        item?.type.forEach((itm)=>{
+          substr +=`
+          <li>${itm}</li>
+          `
+        })
+
+        str+=`
+          <td>
+              <ol type='1'>
+                ${substr}
+              </ol>
+          </td>`
+
+        substr=``
+        item?.language.forEach((itm)=>{
+          substr +=`
+          <li>${itm}</li>
+          `
+        })
+
+        str+=`
+          <td>
+              <ol type='1'>
+                ${substr}
+              </ol>
+          </td>`
+
+        str=`
+        <tr>
+          ${str}
+        </tr> 
+        `
+      })
+
+      table.innerHTML=str
+    }
+
+  </script>
+
+
+
+  <!-- End of firebase -->
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+

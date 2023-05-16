@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Music App Admin</title>
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <link rel="shortcut icon" href="https://img.icons8.com/windows/32/228BE6/audio-wave--v1.png" />
+  <style>
+    #success-text,#external_link_div{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+     
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="upload.html">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Upload New Content</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="category.html">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Add Category</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold">Welcome Admin</h3>
+                  <h6 class="font-weight-normal mb-0">Add new contents to category !</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Manage Categories</p>
+                  <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="forms-sample col-12">
+                            <b class="text-success" id="success-text">Adding Data Please wait ....</b><br />
+                            <!-- Language -->
+                            <div class="form-group row col-12">
+                              <div class="col-8" id="name_div">
+                                <label for="name" class="col-sm-4 col-form-label">Add New Language</label>
+                                <div class="col-sm-8">
+                                  <input required type="text" class="myInputs form-control" id="language" placeholder="E.g: English, Hindi, Japanese">
+                                </div>
+                              </div>
+                              <button style="height: 45px;" type="button" class="saveBtn mt-5 btn btn-primary">Add</button>
+                            </div>
+                            <hr />
+
+                            <!-- Music Type -->
+                            <div class="form-group row col-12">
+                              <div class="col-8" id="name_div">
+                                <label for="name" class="col-sm-4 col-form-label">Add New Music Type</label>
+                                <div class="col-sm-8">
+                                  <input required type="text" class="myInputs form-control" id="type" placeholder="E.g: Jazz">
+                                </div>
+                              </div>
+                              <button style="height: 45px;" type="button" class="saveBtn mt-5 btn btn-primary">Add</button>
+                            </div>
+                            <hr />
+
+                            <!-- Location -->
+                            <div class="form-group row col-12">
+                              <div class="col-8" id="name_div">
+                                <label for="name" class="col-sm-4 col-form-label">Add New Location</label>
+                                <div class="col-sm-8">
+                                  <input required type="text" class="myInputs form-control" id="location" placeholder="E.g: Noth America">
+                                </div>
+                              </div>
+                              <button style="height: 45px;" type="button" class="saveBtn mt-5 btn btn-primary">Add</button>
+                            </div>
+                            <hr />
+
+                            <!-- Duration -->
+                             <div class="form-group row col-12">
+                              <div class="col-8" id="name_div">
+                                <label for="name" class="col-sm-4 col-form-label">Add New Duration Length</label>
+                                <div class="col-sm-8">
+                                  <input required type="number" class="myInputs form-control" id="duration" placeholder="E.g: 1, 2, 3, 2.5">
+                                </div>
+                              </div>
+                              <button style="height: 45px;" type="button" class="saveBtn mt-5 btn btn-primary">Add</button>
+                            </div>
+                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+              
+            <script>
+                document.write(" Copyright © "+new Date().getFullYear()+".")
+             </script>
+            </span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Firebase implementation -->
+
+  <script type="module">
+  
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+    import { getFirestore, collection,doc, updateDoc, arrayUnion, arrayRemove } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyBaG623V-I-7Xmqu2Qp4yr5pysICD6kSpE",
+      authDomain: "freelance-music-app.firebaseapp.com",
+      projectId: "freelance-music-app",
+      storageBucket: "freelance-music-app.appspot.com",
+      messagingSenderId: "1022459607129",
+      appId: "1:1022459607129:web:34bfff0c373884e95b1948",
+      measurementId: "G-G3CX4S7NRE"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+  
+    
+  
+    var saveBtn = document.getElementsByClassName('saveBtn')
+    var inputs = document.getElementsByClassName('myInputs')
+    var successText = document.getElementById('success-text')
+
+    for(let i=0;i<saveBtn.length;i++){
+      saveBtn[i].addEventListener('click',function(e){
+        manageInputs(inputs[i],i)
+      })
+    }
+
+    async function manageInputs(input,index){
+      if(input.value.length<=0){
+        alert('Please Enter the required data and try again')
+        return;
+      }
+
+      successText.style.display='flex'
+      let field = '';
+      let value = input.value;
+      let category = JSON.parse(sessionStorage.getItem('category'))
+      let docId = category[0].id;
+
+      switch(index){
+        case 0:
+          field = 'language'
+          break;
+        case 1:
+          field = 'type'
+          break;
+        case 2:
+          field = 'location'
+          break;
+        case 3:
+          field = 'duration'
+          break;
+        default:
+          field='language'
+          break;
+      }
+
+      input.value = ""
+      const result = await updateCategory(db,field,value,docId)
+      console.log("Update done: ",result)
+      successText.style.display='none'
+      alert("Alert Data Successfully !!!")
+
+    }
+  
+  
+    // function to update category
+    async function updateCategory(db,field,value,docId) {
+     const categoryRef = doc(db, "category", docId);
+     let result = null
+     switch(field){
+      case 'language':
+        result = await updateDoc(categoryRef, {language: arrayUnion(value)});
+        break;
+      case 'type':
+        result = await updateDoc(categoryRef, {type: arrayUnion(value)});
+        break;
+      case 'duration':
+        result = await updateDoc(categoryRef, {duration: arrayUnion(Number(value))});
+        break;
+      case 'location':
+        result = await updateDoc(categoryRef, {location: arrayUnion(value)});
+        break;
+      default:
+        break;
+     }
+     
+      return result;
+    }
+  </script>
+
+  <!-- End of firebase implementation -->
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+
